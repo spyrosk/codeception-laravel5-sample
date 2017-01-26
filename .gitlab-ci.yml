@@ -11,10 +11,12 @@ before_script:
 - apt-get update && apt-get install -qqy git unzip
 # Install composer
 - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Create your .env file from the example file
+- cp .env.testing .env
 # Install all project dependencies
 - composer install
 # Create sqlite dbs
-- touch storage/database.sqlite; touch storage/testing.sqlite
+- touch storage/database.sqlitetouch storage/testing.sqlite
 # Run migrations
 - php artisan migrate && php artisan migrate --database=sqlite_testing
 # Run webserver
